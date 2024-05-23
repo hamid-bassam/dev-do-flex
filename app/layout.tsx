@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Header } from "../src/features/layout/Header";
 import { ThemeProvider } from "../src/theme/ThemeProvider";
 import "./globals.css";
 
@@ -17,11 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
 
-      <body className={clsx(inter.className, "bg-background")}>
-        <ThemeProvider forcedTheme="dark" attribute="class" defaultTheme="system" enableSystem>
-          {children}
+      <body className={clsx(inter.className, "bg-background h-full")}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex flex-col h-full">
+            <Header />
+            <div className="flex-1 max-w-lg m-auto py-12 w-full">
+              {children}
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
