@@ -1,5 +1,6 @@
 
 import { ThemeToggle } from "../../theme/ThemeToggle";
+import { LoginButton } from "./auth/LoginButton";
 export const Header = async () => {
   return (
     <header className="border-b border-b-accent ">
@@ -7,6 +8,7 @@ export const Header = async () => {
         <h2 className="text-2xl font-bold mr-auto ">
           DoFlex
         </h2>
+        <LoginButton />
         <ThemeToggle />
       </div>
 
