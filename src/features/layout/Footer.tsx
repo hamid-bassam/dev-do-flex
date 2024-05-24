@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
 
 
-    <div className="py-2 flex justify-between container gap-1 fxed bottom-0 left-0 right-0 bg-background w-full m-auto border-t border-accent">
+    <div className="py-2 flex sticky justify-between container bottom-0 left-0 right-0 bg-background max-w-lg m-auto border-t border-accent">
       <Link href='/'
         className={clsx(
           buttonVariants({

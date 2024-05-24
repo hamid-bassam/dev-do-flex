@@ -11,7 +11,7 @@ export default async function Home() {
       <p>
         {JSON.stringify(session, null, 2)}
       </p>
-      <div className="flex absolute bottom-16 right-0 left-0 gap-2 justify-center">
+      <div className="flex  gap-2 justify-center">
 
         <Button variant={'secondary'}>click me </Button>
         <Button >click me </Button>
