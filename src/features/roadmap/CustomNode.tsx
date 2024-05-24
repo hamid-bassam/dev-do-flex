@@ -6,7 +6,9 @@ import { Card } from '../../../components/ui/card';
 
 function CustomNode({ data }: { data: any }) {
   return (
+
     <Card className="px-4 py-2 shadow-md rounded-md">
+
       <div className="flex">
         <div className="rounded-full w-12 h-12 flex justify-center items-center bg-primary/20">
           {data.emoji}

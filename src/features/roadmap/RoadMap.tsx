@@ -5,6 +5,7 @@ import ReactFlow, {
   Controls,
   Edge,
   MiniMap,
+  Node,
   addEdge,
   useEdgesState,
   useNodesState,
@@ -13,20 +14,24 @@ import ReactFlow, {
 import 'reactflow/dist/base.css';
 
 import '@/tailwind.config';
+import CardExample from './CardExample';
 import CustomNode from './CustomNode';
 import RoundedNode from './RoundedNode';
+import TaskNode from './TaskNode';
 
 const nodeTypes = {
   custom: CustomNode,
   rounded: RoundedNode,
+  card: CardExample,
+  TaskNode: TaskNode,
 };
 
-const initNodes = [
+const initNodes: Node[] = [
   {
     id: '1',
-    type: 'custom',
+    type: 'card',
     data: { name: 'Jane Doe', job: 'CEO', emoji: '😎' },
-    position: { x: 0, y: 50 },
+    position: { x: 0, y: -300 },
   },
   {
     id: '2',
@@ -41,6 +46,12 @@ const initNodes = [
     data: { name: 'Kristi Price', job: 'Developer', emoji: '🤩' },
     position: { x: 200, y: 200 },
   },
+  {
+    id: '4',
+    type: 'TaskNode',
+    data: { title: 'Task 1', description: 'This is a task', deadLine: '12/12/2022', status: 'completed' },
+    position: { x: 200, y: 400 },
+  }
 ];
 
 const initEdges = [
@@ -53,6 +64,11 @@ const initEdges = [
     id: 'e1-3',
     source: '1',
     target: '3',
+  },
+  {
+    id: 'e3-4',
+    source: '3',
+    target: '4',
   },
 ];
 
