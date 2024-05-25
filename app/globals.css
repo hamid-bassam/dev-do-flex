@@ -57,3 +57,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .transition-max-height {
+    transition: max-height 0.5s ease-out;
+  }
+}
