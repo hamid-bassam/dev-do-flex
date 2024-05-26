@@ -16,6 +16,7 @@ import 'reactflow/dist/base.css';
 import '@/tailwind.config';
 import CardExample from './CardExample';
 import CustomNode from './CustomNode';
+import GoalNode from './GoalNode';
 import RoundedNode from './RoundedNode';
 import TaskNode from './TaskNode';
 
@@ -23,13 +24,14 @@ const nodeTypes = {
   custom: CustomNode,
   rounded: RoundedNode,
   card: CardExample,
-  TaskNode: TaskNode,
+  taskNode: TaskNode,
+  goalNode: GoalNode,
 };
 
 const initNodes: Node[] = [
   {
     id: '1',
-    type: 'card',
+    type: 'goalNode',
     data: { name: 'Jane Doe', job: 'CEO', emoji: '😎' },
     position: { x: 0, y: -300 },
   },
@@ -38,20 +40,34 @@ const initNodes: Node[] = [
     type: 'custom',
     data: { name: 'Tyler Weary', job: 'Designer', emoji: '🤓' },
 
-    position: { x: -200, y: 200 },
+    position: { x: -100, y: 500 },
   },
+
   {
     id: '3',
-    type: 'rounded',
-    data: { name: 'Kristi Price', job: 'Developer', emoji: '🤩' },
-    position: { x: 200, y: 200 },
+    type: 'taskNode',
+    data: { title: 'Task 1', description: 'This is a task', deadLine: '12/12/2022', status: 'completed' },
+    position: { x: 100, y: 500 },
+  },
+  {
+    id: '5',
+    type: 'taskNode',
+    data: { title: 'Task 2', description: 'This is a task', deadLine: '12/12/2022', status: 'completed' },
+    position: { x: 200, y: 500 },
+  },
+  {
+    id: '6',
+    type: 'goalNode',
+    data: { name: 'Jane Doe', job: 'CEO', emoji: '😎' },
+    position: { x: 400, y: 500 },
   },
   {
     id: '4',
-    type: 'TaskNode',
-    data: { title: 'Task 1', description: 'This is a task', deadLine: '12/12/2022', status: 'completed' },
-    position: { x: 200, y: 400 },
-  }
+    type: 'rounded',
+    data: { name: 'Kristi Price', job: 'Developer', emoji: '🤩' },
+    position: { x: -100, y: 800 },
+  },
+
 ];
 
 const initEdges = [
@@ -65,6 +81,17 @@ const initEdges = [
     source: '1',
     target: '3',
   },
+  {
+    id: 'e1-5',
+    source: '1',
+    target: '5',
+  },
+  {
+    id: 'e1-6',
+    source: '1',
+    target: '6',
+  },
+
   {
     id: 'e3-4',
     source: '3',
@@ -88,7 +115,7 @@ export const RoadMap = () => {
       nodeTypes={nodeTypes}
       fitView
       className="bg-card border rounded-md"
-      minZoom={0.2}
+      minZoom={0.1}
       maxZoom={0.7}
 
     >

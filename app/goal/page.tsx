@@ -1,10 +1,14 @@
 'use client'
 
-import { BellRing, Check, Goal } from 'lucide-react';
+import { BellRing, Check, Edit, Ellipsis, Goal, GoalIcon, Paperclip, Plus, SquareCheckBig } from 'lucide-react';
 import { DescriptionScroll } from '../../_components/description-scroll';
+import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../../components/ui/card';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../components/ui/dropdown-menu';
+import { Progress } from '../../components/ui/progress';
 import { Switch } from '../../components/ui/switch';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../components/ui/tooltip';
 import { cn } from '../../lib/utils';
 const Page = () => {
   const className = '';
@@ -25,6 +29,7 @@ const Page = () => {
 
   return (
     <main>
+
       <Card className={cn("px-4 py-2 shadow-md rounded-md", className)}>
         <CardHeader>
           <CardTitle><span className='flex items-center gap-2'><Goal /> realisation d&apos;app web</span> </CardTitle>
@@ -60,6 +65,13 @@ const Page = () => {
             </span> */}
             <DescriptionScroll description={description} />
           </div>
+
+          <div className='inline-flex gap-2'>
+
+            <Badge>Projects</Badge>
+            <Badge variant={'secondary'} className='bg-secondary'>Dev</Badge>
+          </div>
+          <Progress value={1} />
           <div>
             {notifications.map((notification, index) => (
               <div
@@ -80,9 +92,68 @@ const Page = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">
-            <Check className="mr-2 h-4 w-4" /> Mark all as read
-          </Button>
+          <div className='flex flex-col gap-2 w-full'>
+
+            <Button className="w-full">
+              <Check className="mr-2 h-4 w-4" /> Mark all as read
+            </Button>
+            <TooltipProvider>
+              <div className='flex w-full gap-1'>
+
+                <div className='flex-1 mr-auto '></div>
+
+                <Button variant="outline" disabled><Paperclip size={15} /></Button>
+
+                <Tooltip >
+                  <TooltipTrigger>
+                    <Button variant="outline"><Edit size={15} /></Button>
+                  </TooltipTrigger>
+                  <TooltipContent className='bg-popover text-primary'>
+                    <p>Edit</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline"><Plus size={15} /></Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className='flex  items-center'>
+
+                    <Tooltip >
+                      <TooltipTrigger>
+                        <DropdownMenuItem className='p-0'>
+                          <Button variant='ghost' className=''>
+                            <GoalIcon size={15} />
+                          </Button>
+                        </DropdownMenuItem>
+                      </TooltipTrigger>
+                      <TooltipContent className='bg-popover text-primary'>
+                        <p>Add a goal</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <Tooltip >
+                      <TooltipTrigger>
+                        <DropdownMenuItem className='p-0'>
+                          <Button variant='ghost' className=''>
+                            <SquareCheckBig size={15} />
+                          </Button>
+                        </DropdownMenuItem>
+                      </TooltipTrigger>
+                      <TooltipContent className='bg-popover text-primary'>
+                        <p>Add a Task</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <DropdownMenuItem className='p-0 '>
+                      <Button variant='ghost'>
+                        <Ellipsis size={15} />
+                      </Button>
+                    </DropdownMenuItem>
+
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </TooltipProvider>
+          </div>
         </CardFooter>
       </Card>
     </main>
