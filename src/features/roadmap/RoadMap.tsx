@@ -127,7 +127,7 @@ export const RoadMap = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      className="bg-card border rounded-md"
+      className="bg-popover/10 border rounded-md h-[30rem]"
       minZoom={0.1}
       maxZoom={0.7}
 

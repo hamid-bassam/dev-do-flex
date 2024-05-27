@@ -19,8 +19,8 @@ function CustomNode({ data }: { data: any }) {
         </div>
       </div>
 
-      <Handle type="target" position={Position.Top} className="w-16 !bg-accent" />
-      <Handle type="source" position={Position.Bottom} className="w-16 !bg-accent" />
+      <Handle type="target" position={Position.Top} className="w-4 h-4 rounded-full !bg-accent-foreground" />
+      <Handle type="source" position={Position.Bottom} className="w-4 h-4 rounded-full !bg-accent-foreground" />
     </Card>
   );
 }

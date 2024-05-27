@@ -1,7 +1,7 @@
 
 'use client'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
-import { BellRing, Check, Edit, Ellipsis, Goal, GoalIcon, Paperclip, Plus, SquareCheckBig } from 'lucide-react';
+import { BellRing, Edit, Ellipsis, Goal, GoalIcon, Paperclip, Plus, SquareCheckBig } from 'lucide-react';
 
 import { memo } from "react";
 import { Handle, Position, useStore } from 'reactflow';
@@ -98,9 +98,9 @@ const GoalNode = () => {
       <CardFooter>
         <div className='flex relative flex-col gap-2 w-full'>
 
-          <Button className="w-full">
+          {/* <Button className="w-full">
             <Check className="mr-2 h-4 w-4" /> Mark all as read
-          </Button>
+          </Button> */}
           <TooltipProvider>
             <div className='flex w-full gap-1'>
 
@@ -161,8 +161,8 @@ const GoalNode = () => {
           </TooltipProvider>
         </div>
       </CardFooter>
-      <Handle type="target" position={Position.Top} className="w-16 !bg-accent" />
-      <Handle type="source" position={Position.Bottom} className="w-16 !bg-accent" />
+      <Handle type="target" position={Position.Top} className="w-4 h-4 rounded-full !bg-accent-foreground" />
+      <Handle type="source" position={Position.Bottom} className="w-4 h-4 rounded-full !bg-accent-foreground" />
     </Card>
   );
 };

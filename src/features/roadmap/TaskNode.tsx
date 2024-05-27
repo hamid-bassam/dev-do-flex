@@ -1,9 +1,9 @@
 
 'use client'
+import clsx from 'clsx';
 import { memo } from 'react';
 import { Handle, Position } from 'reactflow';
 import { Card } from '../../../components/ui/card';
-import clsx from 'clsx';
 
 function TaskNode({ data }: { data: any }) {
   return (
@@ -18,19 +18,19 @@ function TaskNode({ data }: { data: any }) {
           {data.description}
         </p>
         <p>
-          {data.deadLine?? "No deadline set"}
+          {data.deadLine ?? "No deadline set"}
         </p>
         <div>
-          <span className={clsx("p1 text-xs" , 
-          data.status === "completed" ? "bg-primary-foreground " : "bg-destructive"
+          <span className={clsx("p1 text-xs",
+            data.status === "completed" ? "bg-primary-foreground " : "bg-destructive"
           )}>
             {data.status}
           </span>
         </div>
       </div>
 
-      <Handle type="target" position={Position.Top} className="w-16 !bg-accent" />
-      <Handle type="source" position={Position.Bottom} className="w-16 !bg-accent" />
+      <Handle type="target" position={Position.Top} className="w-4 h-4 rounded-full !bg-accent-foreground" />
+      <Handle type="source" position={Position.Bottom} className="w-4 h-4 rounded-full !bg-accent-foreground" />
     </Card>
   );
 }
