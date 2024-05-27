@@ -14,13 +14,16 @@ export const DescriptionScroll = (props: DescriptionScrollProps) => {
 
 
   const [fullDescription, setFullDescription] = useState(false);
-  const contentRef = useRef(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (fullDescription) {
-      contentRef.current.style.maxHeight = contentRef.current.scrollHeight + "px";
+      if (contentRef.current) {
+
+        (contentRef.current as HTMLDivElement).style.maxHeight = (contentRef.current as HTMLDivElement).scrollHeight + "px";
+      }
     } else {
-      contentRef.current.style.maxHeight = "50px";
+      (contentRef.current as HTMLDivElement).style.maxHeight = "50px";
     }
   }, [fullDescription]);
 
