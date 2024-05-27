@@ -18,6 +18,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  secret: env.AUTH_SECRET,
 };
 
 export const getAuthSession = async () => {

@@ -5,13 +5,15 @@ export const env = createEnv({
   server: {
     GITHUB_ID: z.string().min(1),
     GITHUB_SECRET: z.string().min(1),
+    AUTH_SECRET: z.string().min(1),
   },
   client: {
 
   },
   runtimeEnv: {
     GITHUB_ID: process.env.GITHUB_ID,
-    GITHUB_SECRET: process.env.GITHUB_SECRET
+    GITHUB_SECRET: process.env.GITHUB_SECRET,
+    AUTH_SECRET: process.env.AUTH_SECRET,
   },
 
 })
