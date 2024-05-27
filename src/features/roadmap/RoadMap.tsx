@@ -19,6 +19,7 @@ import CustomNode from './CustomNode';
 import GoalNode from './GoalNode';
 import RoundedNode from './RoundedNode';
 import TaskNode from './TaskNode';
+import TodoNode from './TodoNode';
 
 const nodeTypes = {
   custom: CustomNode,
@@ -26,6 +27,7 @@ const nodeTypes = {
   card: CardExample,
   taskNode: TaskNode,
   goalNode: GoalNode,
+  todoNode: TodoNode,
 };
 
 const initNodes: Node[] = [
@@ -67,6 +69,12 @@ const initNodes: Node[] = [
     data: { name: 'Kristi Price', job: 'Developer', emoji: '🤩' },
     position: { x: -100, y: 800 },
   },
+  {
+    id: '7',
+    type: 'todoNode',
+    data: { name: 'Kristi Price', job: 'Developer', emoji: '🤩' },
+    position: { x: 300, y: 1200 },
+  },
 
 ];
 
@@ -90,6 +98,11 @@ const initEdges = [
     id: 'e1-6',
     source: '1',
     target: '6',
+  },
+  {
+    id: 'e6-7',
+    source: '6',
+    target: '7',
   },
 
   {

@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix
 import { BellRing, Check, Edit, Ellipsis, Goal, GoalIcon, Paperclip, Plus, SquareCheckBig } from 'lucide-react';
 
 import { memo } from "react";
-import { Handle, Position } from 'reactflow';
+import { Handle, Position, useStore } from 'reactflow';
 import { DescriptionScroll } from '../../../_components/description-scroll';
 import { Badge } from '../../../components/ui/badge';
 import { Button } from '../../../components/ui/button';
@@ -29,6 +29,9 @@ const GoalNode = () => {
   ]
 
   const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  // zoom management 
+  const zoom = useStore((state) => state.transform[2]);
+
 
   return (
     <Card className={cn("px-4 py-2 shadow-md rounded-md", className)}>
@@ -118,7 +121,8 @@ const GoalNode = () => {
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline"><Plus size={15} /></Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className='flex  items-center'>
+
+                <DropdownMenuContent className={`flex  items-center ${zoom < 0.5 ? 'transform scale-50 -translate-y-4' : ''}`}>
 
                   <Tooltip >
                     <TooltipTrigger>
@@ -132,6 +136,7 @@ const GoalNode = () => {
                       <p>Add a goal</p>
                     </TooltipContent>
                   </Tooltip>
+
                   <Tooltip >
                     <TooltipTrigger>
                       <DropdownMenuItem className='p-0'>
