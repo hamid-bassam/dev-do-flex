@@ -17,15 +17,17 @@ export const DescriptionScroll = (props: DescriptionScrollProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (fullDescription) {
-      if (contentRef.current) {
 
+    if (contentRef.current) {
+      if (fullDescription) {
         (contentRef.current as HTMLDivElement).style.maxHeight = (contentRef.current as HTMLDivElement).scrollHeight + "px";
       }
-    } else {
-      (contentRef.current as HTMLDivElement).style.maxHeight = "50px";
+      else {
+        (contentRef.current as HTMLDivElement).style.maxHeight = "50px";
+      }
     }
-  }, [fullDescription]);
+  }
+    , [fullDescription]);
 
   return (
     <span className='flex flex-col justify-center items-center gap-2'>
