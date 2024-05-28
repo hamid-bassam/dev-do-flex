@@ -3,7 +3,7 @@
 import { Check } from 'lucide-react';
 import { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import { Card, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui/card';
 // import { Checkbox } from '../../../components/ui/checkbox';
 
 import dynamic from "next/dynamic";
@@ -18,7 +18,8 @@ function TodoNode({ data }: { data: any }) {
           <span className='flex items-center gap-2'><Check size={15} />Todo</span>
         </CardTitle>
       </CardHeader>
-      <div className="flex flex-col gap-2">
+      <CardContent className="grid gap-4">
+
         {/* <div className="flex items-center space-x-2">
           <Checkbox id="terms" />
           <label
@@ -46,10 +47,11 @@ function TodoNode({ data }: { data: any }) {
             todo task 3
           </label>
         </div> */}
-      </div>
-      <div className='w-10 min-w-96 bg-transparent nowheel' style={{ overflow: 'auto' }}>
-        <Editor />
-      </div>
+
+        <div className='w-10 min-w-96 bg-transparent nowheel  ' style={{ overflow: 'auto' }}>
+          <Editor />
+        </div>
+      </CardContent>
 
 
 
