@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '../../../components/ui
 
 import dynamic from "next/dynamic";
 
-const Editor = dynamic(() => import("./../BlockNote/Editor"), { ssr: false });
+
+const MantineEditor = dynamic(() => import("./../BlockNote/MantineEditor"), { ssr: false });
 function TodoNode({ data }: { data: any }) {
   return (
 
@@ -48,8 +49,8 @@ function TodoNode({ data }: { data: any }) {
           </label>
         </div> */}
 
-        <div className='w-10 min-w-96 bg-transparent nowheel  ' style={{ overflow: 'auto' }}>
-          <Editor />
+        <div className='w-10 min-w-96 bg-transparent nowheel nodrag  ' style={{ overflow: 'auto' }}>
+          <MantineEditor />
         </div>
       </CardContent>
 

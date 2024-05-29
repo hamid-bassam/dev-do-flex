@@ -14,6 +14,7 @@ import ReactFlow, {
 import 'reactflow/dist/base.css';
 
 import '@/tailwind.config';
+import { useTheme } from 'next-themes';
 import CardExample from './CardExample';
 import CustomNode from './CustomNode';
 import GoalNode from './GoalNode';
@@ -115,7 +116,7 @@ const initEdges = [
 export const RoadMap = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
-
+  const theme = useTheme();
   const onConnect = useCallback((params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)), []);
 
   return (
@@ -136,7 +137,9 @@ export const RoadMap = () => {
       <MiniMap
         zoomable
         pannable
-        className='h-16 w-16 flex items-center justify-center bg-secondary dark:bg-primary-foreground '
+
+        className='h-16 w-16 flex items-center border rounded-md border-border justify-center bg-card dark:bg-primary-foreground '
+        maskColor={theme.theme === 'light' ? 'rgba(255,255,255)' : ''}
         nodeComponent={function MiniMapNode({ x, y }) {
           return <circle cx={x} cy={y} r="50" className='fill-primary' />;
         }}

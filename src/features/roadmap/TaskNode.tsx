@@ -19,7 +19,7 @@ import { cn } from '../../../lib/utils';
 
 import dynamic from "next/dynamic";
 
-const Editor = dynamic(() => import("./../BlockNote/Editor"), { ssr: false });
+const MantineEditor = dynamic(() => import("./../BlockNote/MantineEditor"), { ssr: false });
 function TaskNode({ data }: { data: any }) {
   const [date, setDate] = React.useState<Date>()
 
@@ -130,7 +130,7 @@ function TaskNode({ data }: { data: any }) {
 
 
         <div className=' min-w-full bg-transparent nowheel nodrag  ' style={{ overflow: 'auto' }}>
-          <Editor />
+          <MantineEditor />
         </div>
 
       </CardContent>
