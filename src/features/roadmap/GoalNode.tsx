@@ -13,6 +13,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Progress } from '../../../components/ui/progress';
 import { Switch } from '../../../components/ui/switch';
 import { cn } from '../../../lib/utils';
+
+import dynamic from "next/dynamic";
+
+const Editor = dynamic(() => import("./../BlockNote/Editor"), { ssr: false });
+
 const GoalNode = () => {
   const className = '';
 
@@ -93,6 +98,9 @@ const GoalNode = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className=' min-w-full bg-transparent nowheel nodrag  ' style={{ overflow: 'auto' }}>
+          <Editor />
         </div>
       </CardContent>
       <CardFooter>

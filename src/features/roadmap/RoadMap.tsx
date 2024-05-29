@@ -136,9 +136,9 @@ export const RoadMap = () => {
       <MiniMap
         zoomable
         pannable
-        className='h-16 w-16 flex items-center justify-center'
+        className='h-16 w-16 flex items-center justify-center bg-secondary dark:bg-primary-foreground '
         nodeComponent={function MiniMapNode({ x, y }) {
-          return <circle cx={x} cy={y} r="50" />;
+          return <circle cx={x} cy={y} r="50" className='fill-primary' />;
         }}
       />
       <Controls />

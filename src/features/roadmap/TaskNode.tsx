@@ -1,21 +1,27 @@
 
 'use client'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
-import { BookmarkCheck, Check, Edit, Ellipsis, Flame, GoalIcon, Paperclip, Plus, PlusIcon, SquareCheckBig, TriangleAlert } from 'lucide-react';
+import { format } from "date-fns";
+import { BookmarkCheck, CalendarIcon, Check, Edit, Ellipsis, Flame, GoalIcon, Paperclip, Plus, PlusIcon, SquareCheckBig, TriangleAlert } from 'lucide-react';
+import * as React from "react";
 import { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import { Card } from '../../../components/ui/card';
-
 import { DescriptionScroll } from '../../../_components/description-scroll';
 import { Badge } from '../../../components/ui/badge';
 import { Button } from '../../../components/ui/button';
-import { CardContent, CardFooter, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Calendar } from '../../../components/ui/calendar';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../../../components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../../components/ui/dropdown-menu';
+import { Popover, PopoverContent, PopoverTrigger } from '../../../components/ui/popover';
 import { Slider } from '../../../components/ui/slider';
 import { cn } from '../../../lib/utils';
 
 
+import dynamic from "next/dynamic";
+
+const Editor = dynamic(() => import("./../BlockNote/Editor"), { ssr: false });
 function TaskNode({ data }: { data: any }) {
+  const [date, setDate] = React.useState<Date>()
 
   const handleChange = (event: React.ChangeEvent<HTMLDivElement>) => {
     const target = event.target as HTMLDivElement;
@@ -96,6 +102,35 @@ function TaskNode({ data }: { data: any }) {
             <Flame strokeWidth={3} size={20} />
           </div>
           <Slider trackColor='bg-destructive' rangeColor='bg-destructive' defaultValue={[33]} max={100} step={1} />
+        </div>
+
+
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant={"outline"}
+              className={cn(
+                " justify-start text-left font-normal",
+                !date && "text-muted-foreground"
+              )}
+            >
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              {date ? format(date, "PPP") : <span>Pick a date</span>}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              initialFocus
+            />
+          </PopoverContent>
+        </Popover>
+
+
+        <div className=' min-w-full bg-transparent nowheel nodrag  ' style={{ overflow: 'auto' }}>
+          <Editor />
         </div>
 
       </CardContent>
