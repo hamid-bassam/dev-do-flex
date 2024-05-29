@@ -17,8 +17,12 @@ import { cn } from '../../../lib/utils';
 
 function TaskNode({ data }: { data: any }) {
 
-  const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-
+  const handleChange = (event: React.ChangeEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLDivElement;
+    const value = (target.dataset.value as unknown) as number[]; // Adjust based on how value is stored in the target
+    console.log(value);
+  }
+  const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.`;
   return (
     <Card className={cn("px-4 py-2 shadow-md rounded-md")}>
       <CardHeader>
@@ -85,7 +89,7 @@ function TaskNode({ data }: { data: any }) {
           <div className='text-primary'>
             <TriangleAlert strokeWidth={3} size={20} />
           </div>
-          <Slider defaultValue={[33]} max={100} step={1} />
+          <Slider onValueCommit={(value: number[]) => console.log("value", value)} defaultValue={[33]} max={100} step={1} />
         </div>
         <div className='flex gap-2 items-center'>
           <div className='text-destructive'>
